@@ -16,7 +16,6 @@ class XGBoostColumnClassifier(BaseColumnClassifier):
         n_estimators: int = 200,
         max_depth: int = 6,
         learning_rate: float = 0.1,
-        use_label_encoder: bool = False,
     ) -> None:
         self._model = XGBClassifier(
             n_estimators=n_estimators,

@@ -68,6 +68,15 @@ class TestTextualFeatures:
         assert features["header_embedding"].shape == (768,)
         assert np.all(features["header_embedding"] == 0)
 
+    def test_custom_embedding_fn(self):
+        col = pd.Series(["hello", "world"])
+        mock_emb = np.ones(768, dtype=np.float32)
+        features = compute_textual_features(
+            col, "test_header", embedding_fn=lambda _: mock_emb
+        )
+        assert np.all(features["header_embedding"] == 1.0)
+        assert np.all(features["values_embedding"] == 1.0)
+
 
 class TestExtractAllFeatures:
     def test_basic(self):

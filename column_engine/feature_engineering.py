@@ -71,7 +71,7 @@ def compute_statistical_features(col: pd.Series) -> Dict[str, float]:
 # ---------------------------------------------------------------------------
 
 
-def _match_ratio(col: pd.Series, pattern: re.Pattern) -> float:  # type: ignore[type-arg]
+def _match_ratio(col: pd.Series, pattern: re.Pattern[str]) -> float:
     """Fraction of non-null string values matching *pattern*."""
     str_vals = col.dropna().astype(str)
     if str_vals.empty:
